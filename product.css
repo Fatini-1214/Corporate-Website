@@ -5,13 +5,6 @@
         padding: 0;
 	color: #a23d6b;
     }
-.body {
-    background: url('PINK.jpg') no-repeat center center;
-    background-size: cover;
-    text-align: center;
-    padding: 2em 0;
-    position: relative;
-}
 
 a {
     text-decoration: none;
@@ -68,7 +61,7 @@ a {
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-	background: url('pink.jpg') no-repeat center center;
+    background: url('PINK.jpg') no-repeat center center;
 }
 
 .product:hover {
