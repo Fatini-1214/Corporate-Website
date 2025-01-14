@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<head>
+    
+    <title>Blueberry Plush</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fdf7f6;
+            margin: 0;
+            padding: 0;
+            color: #4a3c38;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+       
+        .product-container {
+            max-width: 1200px;
+            margin: 80px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .product-image {
+            flex: 1 1 45%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .product-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-details {
+            flex: 1 1 45%;
+            max-width: 600px;
+            color: #4a3c38;
+            text-align: left;
+            font-weight: 400;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .product-details h2 {
+            font-size: 42px;
+            font-family: 'Playfair Display', serif;
+            color: #a23d6b;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-details .price {
+            font-size: 36px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            color: #f47c7c;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-details p,
+        .product-details ul {
+            font-size: 18px;
+            color: #5a4c44;
+        }
+
+        .product-details ul {
+            list-style: disc;
+            margin: 10px 0 30px 25px;
+        }
+
+        h3 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            color: #4a3c38;
+            margin-top: 30px;
+        }
+
+        
+        .btn {
+            background-color: #eaa7bf;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            margin-right: 20px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e6879a;
+            transform: scale(1.05);
+        }
+
+        /* Keyframes for fadeInUp animation */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product-image,
+            .product-details {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+		#backToTop {
+			position: fixed;
+			bottom: 150px; 
+			right: 20px; 
+			z-index: 1000; 
+			background-color: #ff69b4; 
+			color: white;
+			border: none;
+			border-radius: 50%; 
+			width: 50px;
+			height: 50px;
+			font-size: 24px;
+			text-align: center;
+			line-height: 50px;
+			cursor: pointer;
+			display: none; 
+			transition: opacity 0.3s; 
+		}
+
+		#backToTop:hover {
+			background-color: #e75480; 
+		}
+    </style>
+</head>
+<body>
+
+    <main>
+        <div class="product-container">
+            <div class="product-image">
+                <img src="C2.jpg" alt="Blueberry Plush">
+            </div>
+            <div class="product-details">
+                <h2>Blueberry Plush</h2>
+                <p class="price">MYR 35.00</p>
+                <p>This cozy and soft crochet plush is perfect for snuggling and adding a touch of whimsy to your decor. Crafted with love and care, it brings comfort and charm to any room. Whether you're using it as a cuddle buddy or as a delightful decorative piece, this plush is sure to brighten up your space.</p>
+
+                <h3>Details:</h3>
+                <ul>
+                    <li><strong>Size:</strong> Approximately 6 inches in diameter, making it the perfect size for hugging or displaying on shelves.</li>
+                    <li><strong>Weight:</strong> Light and portable, ideal for both children and adults alike.</li>
+                    <li><strong>Shape:</strong> Round, resembling a cute blueberry with a little leafy top for added charm.</li>
+                </ul>
+
+                <h3>Material:</h3>
+                <ul>
+                    <li>Made from soft, hypoallergenic acrylic yarn that provides a plush, velvety feel.</li>
+                    <li>Stuffed with non-toxic polyester fiberfill for extra squishiness.</li>
+                    <li>Hand-stitched details and a carefully crafted leaf design on top.</li>
+                </ul>
+
+                <h3>Care Instructions:</h3>
+                <ul>
+                    <li>Hand wash in cold water with mild detergent.</li>
+                    <li>Air dry flat to preserve its shape and softness.</li>
+                    <li>Keep in a dry, cool area when not in use to maintain its texture.</li>
+                </ul>
+
+                <h3>Customization Options:</h3>
+                <ul>
+                    <li>Available in different colors or sizes upon request.</li>
+                </ul>
+                <a href="pf.html" class="btn">Buy Now</a>
+            </div>
+        </div>
+    </main>
+		<!-- Back to Top Button -->
+	<button id="backToTop" title="Go to top">↑</button>
+	<script>
+		const backToTopButton = document.getElementById("backToTop");
+
+		window.onscroll = function () {
+			if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+				backToTopButton.style.display = "block";
+			} else {
+				backToTopButton.style.display = "none";
+			}
+		};
+
+		backToTopButton.addEventListener("click", function () {
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth",
+			});
+		});
+	</script>
+</body>
+</html>

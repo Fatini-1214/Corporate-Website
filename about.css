@@ -1,0 +1,116 @@
+  body{
+            font-family: arial;
+            margin: 0;
+            padding: 0;
+            background-image: url('backgroundabt.png');
+      	    background-position: center;
+            color: #333;
+        }
+	h2{
+	    font-family: 'lovelace';
+	}
+        header {
+            background-color: #FFC0CB;
+            color: #9F2B68;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+	.business-background .content-wrapper {
+    	    display: flex;
+    	    align-items: ;
+    	    gap: 10px; 
+	}
+
+	.business-background .text {
+    	    flex: 2; 
+	}
+
+	.business-background .image {
+    	    flex: 1; 
+	}
+
+	.business-background .image img {
+   	    max-width: 100%; 
+    	    border-radius: 8px;
+    	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+
+	.vision-mission-wrapper {
+    	    display: flex;
+    	    justify-content: space-between;     
+	    gap: 20px; 
+	    margin-bottom: 30px; 
+	}
+	.vision,
+	.mission {
+    	    flex: 1; 
+    	    padding: 20px;
+    	    background-color: #FFC0CB;
+    	    border-radius: 8px; 
+    	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+	}
+	.objective,
+	.tagline {
+    	    flex: 1; 
+    	    padding: 20px;
+    	    background-color: #FFC0CB;
+    	    border-radius: 8px; 
+    	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+	}
+	@media (max-width: 768px) {
+            .vision-mission-wrapper {
+            flex-direction: column; 
+            }
+    	}
+	section {
+            margin-bottom: 30px;
+            padding: 20px;
+			background-color: #FFF5EE;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        section h2 {
+            color: #9F2B68;
+            margin-bottom: 10px;
+        }
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .org-chart img {
+            max-width: 80%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+		}
+		
+		#backToTop {
+			position: fixed;
+			bottom: 150px; 
+			right: 20px; 
+			z-index: 1000; 
+			background-color: #ff69b4; 
+			color: white;
+			border: none;
+			border-radius: 50%; 
+			width: 50px;
+			height: 50px;
+			font-size: 24px;
+			text-align: center;
+			line-height: 50px;
+			cursor: pointer;
+			display: none; 
+			transition: opacity 0.3s; 
+		}
+
+		#backToTop:hover {
+			background-color: #e75480; 
+		}

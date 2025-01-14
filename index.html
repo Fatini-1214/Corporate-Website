@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crafted Comfort</title>
+    <link rel="stylesheet" href="index.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+	<link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo1.png" alt="Crafted Comfort Logo">
+            </a>
+        </div>
+        <button class="menu-button" id="menuButton" onclick="toggleSidebar()">☰</button>
+		<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+		
+		<div class="buy-button">
+		<a href="pf.html"><i class="fa-solid fa-cart-shopping" style="color: #a23d6b;"></i></a>
+		</div>
+	<!-- Sidebar Menu -->
+        <div class="sidebar" id="sidebar">
+        <h2>Crafted Comfort</h2>
+        <nav>
+            <ul>
+                <li><a href="home.html" target="content-frame">Home</a></li>
+                <li><a href="about.html" target="content-frame">About Us</a></li>
+                <li><a href="product.html" target="content-frame">Our Collections</a></li>
+                <li><a href="gallery.html" target="content-frame">Gallery</a></li>
+				<li><a href="blog.html" target="content-frame">Blog & Learning</a></li>
+            </ul>
+        </nav>
+		  <script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const menuButton = document.getElementById('menuButton');
+        const overlay = document.getElementById('overlay');
+        const buyButton = document.querySelector('.buy-button'); 
+
+        sidebar.classList.toggle('active');
+        menuButton.classList.toggle('hidden');
+        overlay.classList.toggle('active');
+        buyButton.classList.toggle('hidden'); 
+    }
+
+    function closeSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const menuButton = document.getElementById('menuButton');
+        const overlay = document.getElementById('overlay');
+        const buyButton = document.querySelector('.buy-button'); 
+
+        sidebar.classList.remove('active');
+        menuButton.classList.remove('hidden');
+        overlay.classList.remove('active');
+        buyButton.classList.remove('hidden'); 
+    }
+</script>
+
+    </div>
+    </header>
+		
+	
+	<iframe id="main-frame" name="content-frame" src="home.html"></iframe>
+
+	<!-- Footer -->
+	<footer>
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="privacy.html" target="content-frame">Privacy Policy</a>
+            <a href="t&c.html" target="content-frame">Terms & Conditions</a>
+            <a href="return.html" target="content-frame">Returns</a>
+        </div>
+
+        <div class="footer-copyright">
+            <p>© 2025 Crafted Comfort. All rights reserved.</p>
+            <a href="https://www.instagram.com" target="_blank" class="footer-instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

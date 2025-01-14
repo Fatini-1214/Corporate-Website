@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <title>Purchase Information</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px; 
+	  background-image: url('bg.jpg');
+     
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .form-group input[type="number"] {
+      width: 50%;
+    }
+    .form-group textarea {
+      resize: vertical;
+    }
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #a23d6b;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .form-group button:hover {
+      background-color: #ec42c1;
+    }
+    .product-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .product-group span {
+      flex: 2;
+      text-align: left;
+    }
+    .product-group input[type="checkbox"] {
+      margin: 0 10px;
+      flex: 0;
+    }
+    .product-group input[type="number"] {
+      flex: 0;
+      width: 60px;
+    }
+</style>
+<script>
+  const productPrices = {
+    "Velvet Crochet Bag": 40,
+    "Mini Crochet Chic": 20,
+    "Blueberry Plush": 35,
+    "Penguin Puffs": 20,
+    "Cloudberry Charm": 10,
+    "Squishy Squid": 45,
+    "Squishy Sea Octopus": 20,
+    "Mushroom Mellow": 30,
+    "Whimsical Fishy": 20
+  };
+
+  function calculateTotal() {
+    let total = 0;
+    const checkboxes = document.querySelectorAll('.product-checkbox');
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        const productName = checkbox.value;
+        const quantityInput = checkbox.nextElementSibling;
+        const quantity = parseInt(quantityInput.value) || 0;
+        const price = productPrices[productName];
+        total += quantity * price;
+      }
+    });
+    document.getElementById('totalPrice').innerText = `Total: RM ${total.toFixed(2)}`;
+  }
+</script>
+</head>
+<body>
+  <h1>Purchase Information</h1>
+  <div class="form-container">
+    <form action="https://getform.io/f/brooqqxa" method="POST">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="tel">Tel No:</label>
+        <input type="tel" id="tel" name="tel" placeholder="Enter your phone number" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="products">Products:</label>
+        <div class="product-group">
+          <span>Velvet Crochet Bag</span>
+          <input type="checkbox" class="product-checkbox" name="products[]" value="Velvet Crochet Bag"  onchange="calculateTotal()">
+          <input type="number" class="product-quantity" name="quantity[Velvet Crochet Bag]" placeholder="Qty" min="0" max="3"  onchange="calculateTotal()">
+        </div>
+        <div class="product-group">
+          <span>Mini Crochet Chic</span>
+          <input type="checkbox" class="product-checkbox" name="products[]" value="Mini Crochet Chic"  onchange="calculateTotal()">
+          <input type="number" class="product-quantity" name="quantity[Mini Crochet Chic]" placeholder="Qty" min="0" max="3"  onchange="calculateTotal()">
+        </div>
+        <div class="product-group">
+          <span class="product-name">Blueberry Plush</span>
+          <input type="checkbox" class="product-checkbox" name="products[]" value="Blueberry Plush"  onchange="calculateTotal()">
+          <input type="number" class="product-quantity" name="quantity[Blueberry Plush]" placeholder="Qty" min="0" max="3"  onchange="calculateTotal()">
+        </div>
+        <div class="product-group">
+          <span class="product-name">Penguin Puffs</span>
+          <input type="checkbox" class="product-checkbox" name="products[]" value="Penguin Puffs"  onchange="calculateTotal()">
+          <input type="number" class="product-quantity" name="quantity[Penguin Puffs]" placeholder="Qty" min="0" max="3"  onchange="calculateTotal()">
+        </div>
+        <div class="product-group">
+          <span class="product-name">Cloudberry Charm</span>
+          <input type="checkbox" class="product-checkbox" name="products[]" value="Cloudberry Charm"  onchange="calculateTotal()">
+          <input type="number" class="product-quantity" name="quantity[Cloudberry Charm]" placeholder="Qty" min="0" max="3"  onchange="calculateTotal()">
+        </div>
+        <div class="product-group">
+          <span class="product-name">Squishy Squid</span>
+          <input type="checkbox" class="product-checkbox" name="products[]" value="Squishy Squid"  onchange="calculateTotal()">
+          <input type="number" class="product-quantity" name="quantity[Squishy Squid]" placeholder="Qty" min="0" max="3"  onchange="calculateTotal()">
+        </div>
+        <div class="product-group">
+          <span class="product-name">Squishy Sea Octopus</span>
+          <input type="checkbox" class="product-checkbox" name="products[]" value="Squishy Sea Octopus"  onchange="calculateTotal()">
+          <input type="number" class="product-quantity" name="quantity[Squishy Sea Octopus]" placeholder="Qty" min="0" max="3"  onchange="calculateTotal()">
+        </div>
+        <div class="product-group">
+          <span class="product-name">Mushroom Mellow</span>
+          <input type="checkbox" class="product-checkbox" name="products[]" value="Mushroom Mellow"  onchange="calculateTotal()">
+          <input type="number" class="product-quantity" name="quantity[Mushroom Mellow]" placeholder="Qty" min="0" max="3"  onchange="calculateTotal()">
+        </div>
+        <div class="product-group">
+          <span class="product-name">Whimsical Fishy</span>
+          <input type="checkbox" class="product-checkbox" name="products[]" value="Whimsical Fishy"  onchange="calculateTotal()">
+          <input type="number" class="product-quantity" name="quantity[Whimsical Fishy]" placeholder="Qty" min="0" max="3"  onchange="calculateTotal()">
+        </div>
+      </div>
+      <div class="form-group" id="totalPrice">
+        Total: RM0.00
+      </div>
+      <div class="form-group">
+         <label for="pay">Payment Method:</label>
+         <select id="pay" name="payment_method" required>
+          <option value="" disabled selected>Select Payment Method</option>
+          <option value="online">Online Banking</option>
+          <option value="cod">COD</option>
+      </select>
+      <h4> If you choose online payment please DM us <h4>
+      </div>
+      <div class="form-group">
+       <a href="https://www.instagram.com/crafted.crochetz_/" target="_blank">
+       <button type="button">To continue online payment click this</button>
+       </a>
+      </div>
+      <div class="form-group">
+         <label for="address">Address:</label>
+         <textarea id="address" name="address" rows="4" placeholder="Enter your address" required></textarea>
+      </div>
+      <div class="form-group">
+         <label for="notes">Notes:</label>
+         <textarea id="notes" name="notes" rows="4" placeholder="Notes"></textarea>
+      </div>
+      <div class="form-group">
+      <h1> Delivery only available in Malaysia </h1>
+      </div>
+      <div class="form-group">
+         <button type="submit">Submit</button>
+      </div>
+      <div class="form-group">
+         <button type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery</title>
+       <style>
+        body, h1, h2 {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            color: #a23d6b;
+        }
+
+        .gallery {
+            padding: 30px 20px;
+            text-align: center;
+            background: #ffe6ef;
+        }
+
+        .gallery h1, h2 {
+            font-size: 50px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+		.gallery .subtitle {
+            font-size: 27px;
+            font-style: italic;
+        }
+
+        .gallery-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .gallery-item {
+            background: url('pink.jpg') no-repeat center center;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item h3 {
+            font-size: 1.8em;
+            margin-top: 15px;
+            color: #6d3f3f;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2em;
+            color: white;
+            cursor: pointer;
+        }
+
+        .lightbox .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3em;
+            color: white;
+            cursor: pointer;
+        }
+
+        .lightbox .arrow.left {
+            left: 20px;
+        }
+
+        .lightbox .arrow.right {
+            right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-items {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-item {
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            .gallery-item h3 {
+                font-size: 1.4em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-items {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery .subtitle {
+                font-size: 1.2em;
+            }
+
+        }
+		#backToTop {
+			position: fixed;
+			bottom: 150px; 
+			right: 20px; 
+			z-index: 1000; 
+			background-color: #ff69b4; 
+			color: white;
+			border: none;
+			border-radius: 50%; 
+			width: 50px;
+			height: 50px;
+			font-size: 24px;
+			text-align: center;
+			line-height: 50px;
+			cursor: pointer;
+			display: none; 
+			transition: opacity 0.3s; 
+		}
+    </style>
+    <script>
+        let currentImageIndex = 0;
+        const images = [
+            'C77.jpg', 'B1.jpg', 'C2.jpg', 'C3.jpg', 'C4.jpg', 'C1.jpg', 'C11.jpg', 'C13.jpg', 'C10.jpg','C5.png', 'C6.png', 'A1.png'];
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImage = lightbox.querySelector('img');
+            lightboxImage.src = images[currentImageIndex];
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.querySelector('.lightbox');
+            lightbox.style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            const lightboxImage = document.querySelector('.lightbox img');
+            lightboxImage.src = images[currentImageIndex];
+        }
+    </script>
+</head>
+<body>
+
+    
+    <div class="lightbox" onclick="closeLightbox()">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img src="" alt="Expanded Crochet Item">
+        <span class="arrow left" onclick="event.stopPropagation(); changeImage(-1)">&lt;</span>
+        <span class="arrow right" onclick="event.stopPropagation(); changeImage(1)">&gt;</span>
+    </div>
+    </div>
+
+    
+    <section class="gallery">
+		<h2> Our Crochet Collection </h2>
+		<p class="subtitle">A Showcase of Beautiful Crochet Creations </p>
+        <div class="gallery-items">
+            <div class="gallery-item" onclick="openLightbox(0)">
+                <img src="C77.jpg" alt="Velvet Crochet Bag">
+                <h3>Velvet Crochet Bag</h3>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(1)">
+                <img src="B1.jpg" alt="Mini Crochet Chic">
+                <h3>Mini Crochet Chic</h3>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(2)">
+                <img src="C2.jpg" alt="Blueberry Plush">
+                <h3>Blueberry Plush</h3>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(3)">
+                <img src="C3.jpg" alt="Penguin Puffs">
+                <h3>Penguin Puffs</h3>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(4)">
+                <img src="C4.jpg" alt="Squishy Squid">
+                <h3>Squishy Squid</h3>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(5)">
+                <img src="C1.jpg" alt="Cloudberry Charm">
+                <h3>Cloudberry Charm</h3>
+            </div>
+		<div class="gallery-item" onclick="openLightbox(6)">
+                <img src="C11.jpg" alt="Squishy Sea Octopus">
+                <h3>Squishy Sea Octopus</h3>
+            </div>
+		<div class="gallery-item" onclick="openLightbox(7)">
+                <img src="C13.jpg" alt="Whimsical Fishy">
+                <h3>Whimsical Fishy</h3>
+            </div>
+		<div class="gallery-item" onclick="openLightbox(8)">
+                <img src="C10.jpg" alt="Mushroom Mellow">
+                <h3>Mushroom Mellow</h3>
+</div>
+		<div class="gallery-item" onclick="openLightbox(9)">
+                <img src="C5.png" alt="Crochet Sea">
+                <h3>Crochet Sea</h3>
+            </div>
+<div class="gallery-item" onclick="openLightbox(10)">
+                <img src="C6.png" alt="Cherry Blossom">
+                <h3>Cherry Blossom</h3>
+            </div>	
+            <div class="gallery-item" onclick="openLightbox(11)">
+                <img src="A1.png" alt="">
+                <h3>Whimsical Woodland Friends</h3>
+            </div>
+        </div>
+    </section>
+	<!-- Back to Top Button -->
+	<button id="backToTop" title="Go to top">↑</button>
+	<script>
+		const backToTopButton = document.getElementById("backToTop");
+
+		window.onscroll = function () {
+			if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+				backToTopButton.style.display = "block";
+			} else {
+				backToTopButton.style.display = "none";
+			}
+		};
+
+		backToTopButton.addEventListener("click", function () {
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth",
+			});
+		});
+	</script>
+</body>
+</html>

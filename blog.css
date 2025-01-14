@@ -1,0 +1,98 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+	background-image: url('bg.jpg');
+}
+
+header {
+    text-align: center;
+    background-color: #ffe6ef;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #a23d6b;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Tutorial List */
+.tutorial-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.tutorial {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    gap: 20px; 
+}
+
+.tutorial .content {
+    flex: 2;
+}
+
+.tutorial .image {
+    flex: 1;
+    text-align: center;
+}
+
+.tutorial .image img {
+    width: 100% !important;
+    max-width: 200px !important;
+    height: auto !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+	
+}
+
+.tutorial h2 {
+    color: #a23d6b;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.tutorial p {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.learn-btn {
+    padding: 10px 15px;
+    background-color: #a23d6b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.learn-btn:hover {
+    background-color: #822d54;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .tutorial {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tutorial .image img {
+        max-width: 100%;
+    }
+}
+

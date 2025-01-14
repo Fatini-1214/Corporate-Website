@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crafted Comfort</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- Welcome Section -->
+  <section id="welcome" class="welcome-section">
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="5.png" alt="New Arrival">
+        </div>
+        <div class="slide fade">
+            <img src="4.png" alt="Image 2">
+        </div>
+        <div class="slide fade">
+            <img src="3.png" alt="Image 3">
+        </div>
+		 <div class="slide fade">
+            <img src="2.png" alt="Image 3">
+        </div>
+    </div>
+	<script>
+
+	let slideIndex = 0;
+	const slides = document.querySelectorAll(".slide");
+
+	function showSlides() {
+		slides.forEach((slide, index) => {
+			slide.style.display = "none"; 
+		});
+
+		slideIndex++;
+		if (slideIndex > slides.length) slideIndex = 1;
+		slides[slideIndex - 1].style.display = "block"; 
+
+		setTimeout(showSlides, 5000); 
+	}
+
+
+	showSlides();
+	</script>
+</section> 
+
+<!-- Image and Text Section -->
+	<section class="image-text-section">
+		<div class="image-container">
+			<img src="banner1.png" alt="Descriptive Alt Text">
+		</div>
+		<div class="text-container">
+			<h2>Our Story</h2>
+			<p>
+				At Crafted Comfort, we take pride in creating handmade crochet items that bring joy and warmth to your life. 
+				Every piece is crafted with love and care to add a touch of magic to your everyday moments.
+			</p>
+			<a href="about.html"><button class="learn-more-btn">Learn More</button></a>
+		</div>
+	</section>
+
+
+
+    <!-- Best Sellers Section -->
+    <section class="best-sellers">
+        <h2>Best Sellers</h2>
+        <div class="products-grid">
+            <div class="product-card">
+              <a href="penguin.html"><img src="C3.jpg" alt="Product 1">
+                <p>Penguin Puffs</p>
+                <span>RM15.00</span>
+				</a>
+            </div>
+            <div class="product-card">
+             <a href="mini.html"><img src="B1.jpg" alt="Product 2">
+                <p>Mini Crochet Chic</p>
+                <span>RM20.00</span>
+			</a>
+            </div>
+            <div class="product-card">
+            <a href="blueberry.html"><img src="C2.jpg" alt="Product 3">
+                <p>Blueberry Plush</p>
+                <span>RM35.00</span>
+			</a>
+            </div>
+        </div>
+    </section>
+
+   <!-- Our Collections Section -->
+	<section class="collections">
+		<h2>Our Collections</h2>
+		<div class="collections-grid">
+			<div class="collection-item">
+				<a href="cloud.html">
+					<img src="C1.jpg" alt="Sneak Peek 1">
+					<p>Cloudberry Charm</p>
+				</a>
+			</div>
+			<div class="collection-item">
+				<a href="octopus.html">
+					<img src="C11.jpg" alt="Sneak Peek 2">
+					<p>Squishy Sea</p>
+				</a>
+			</div>
+			<div class="collection-item">
+				<a href="whimsical.html">
+					<img src="C13.jpg" alt="Sneak Peek 3">
+					<p>Whimsical Fishy</p>
+				</a>
+			</div>
+		</div>
+		<button class="show-more-btn" onclick="location.href='product.html'">Show More</button>
+	</section>
+
+	   <!-- Blog/Learning Section -->
+	<section class="blog-learning">
+		<h2>Blog & Learning</h2>
+		<p>
+			Explore our tutorials and blog posts to dive deeper into the art of crochet. Whether you're a beginner or an expert, we have something for everyone.
+		</p>
+		<button class="cta-btn" onclick="location.href='blog.html'">Learn More</button>
+	</section>
+
+		<!-- Back to Top Button -->
+	<button id="backToTop" title="Go to top">↑</button>
+	<script>
+		const backToTopButton = document.getElementById("backToTop");
+
+		window.onscroll = function () {
+			if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+				backToTopButton.style.display = "block";
+			} else {
+				backToTopButton.style.display = "none";
+			}
+		};
+
+		backToTopButton.addEventListener("click", function () {
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth",
+			});
+		});
+	</script>
+</body>
+</html>

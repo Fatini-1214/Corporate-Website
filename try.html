@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crafted Comfort - Handmade Crochet Goods</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff; 
+            color: #000000;
+        }
+
+        /* Banner Section */
+        .banner {
+    position: relative;
+    width: 100%;
+    height: 300px; /* You can adjust this height as needed */
+    overflow: hidden;
+}
+
+.banner-slide {
+    display: flex;
+    width: 300%; /* 3 images in the slide, so it needs to be 3 times the width of one image */
+    height: 100%;
+    transition: transform 1s ease;
+}
+
+.banner-slide a {
+    width: 33.33%; /* Ensures each image takes up one-third of the slide container */
+}
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .banner-links {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+        .banner-links button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1.2em;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .banner-links button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .banner-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .banner-overlay button {
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .banner-overlay button.active {
+            background-color: #874c62;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            background-color: #ffb8d8; 
+            height: 100vh;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            z-index: 1000;
+        }
+        .sidebar.active {
+            left: 0;
+        }
+        .sidebar h2 {
+            font-size: 1.8em;
+            color: #ec42c1; 
+            margin-bottom: 20px;
+        }
+        .sidebar nav ul {
+            list-style: none;
+        }
+        .sidebar nav ul li {
+            margin: 15px 0;
+        }
+        .sidebar nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .sidebar nav ul li a:hover {
+            background-color: #ec42c1; 
+            color: #fff;
+        }
+        /* Main Content */
+        .main {
+            padding: 20px;
+        }
+        .hero {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            color: #000000;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 10px 0 20px;
+        }
+        .hero button {
+            background-color: #ffb8d8;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .hero button:hover {
+            background-color: #ec42c1;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+        }
+        .product img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .product h3 {
+            font-size: 1.2em;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+        .product p {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .product button {
+            background-color: #ffb8d8;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            font-size: 0.9em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background-color: #ec42c1;
+        }
+        /* Hamburger Button */
+        .menu-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            background-color: #ffb8d8;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .menu-button.hidden {
+            display: none;
+        }
+        .menu-button:hover {
+            background-color: #ec42c1;
+        }
+		  /* Overlay for clicking outside sidebar */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: none;
+            z-index: 999;
+        }
+        .overlay.active {
+            display: block;
+        }
+		/* Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 150px; /* Adjust distance from the bottom */
+    right: 20px; /* Adjust distance from the right */
+    z-index: 1000; /* Ensure it appears on top */
+    background-color: #ff69b4; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Makes it circular */
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    transition: opacity 0.3s; /* Smooth appearance */
+}
+
+#backToTop:hover {
+    background-color: #e75480; /* Slightly darker on hover */
+}
+    </style>
+</head>
+<body>
+    <!-- Banner Section -->
+    <div class="banner">
+        <div class="banner-slide" id="bannerSlide">
+            <a href="#shop"><img src="banner1.png" alt="Shop Now"></a>
+            <a href="#about"><img src="3.png" alt="Learn More"></a>
+            <a href="#contact"><img src="5.png" alt="Contact Us"></a>
+        </div>
+        <div class="banner-links">
+            <button onclick="prevSlide()">❮</button>
+            <button onclick="nextSlide()">❯</button>
+        </div>
+        <div class="banner-overlay" id="bannerOverlay">
+            <button onclick="goToSlide(0)" class="active"></button>
+            <button onclick="goToSlide(1)"></button>
+            <button onclick="goToSlide(2)"></button>
+        </div>    
+		<script>
+        let currentSlide = 0;
+
+        function
+    function prevSlide() {
+        const slides = document.querySelectorAll('.banner-slide a');
+        const totalSlides = slides.length;
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateBanner();
+    }
+
+    function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        updateBanner();
+    }
+
+    function updateBanner() {
+        const bannerSlide = document.getElementById('bannerSlide');
+        bannerSlide.style.transform = `translateX(-${currentSlide * 100}%)`;
+        const dots = document.querySelectorAll('.banner-overlay button');
+        dots.forEach((dot, index) => {
+            dot.classList.remove('active');
+            if (index === currentSlide) {
+                dot.classList.add('active');
+            }
+        });
+    }
+
+    // Auto slide every 5 seconds
+    setInterval(nextSlide, 5000);
+</script> 
+    </div>
+    
+	<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <h2>Crafted Comfort</h2>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+		  <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const menuButton = document.getElementById('menuButton');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            menuButton.classList.toggle('hidden');
+            overlay.classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const menuButton = document.getElementById('menuButton');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.remove('active');
+            menuButton.classList.remove('hidden');
+            overlay.classList.remove('active');
+        }
+    </script>
+    </div>
+    
+    <!-- Hamburger Menu Button -->
+    <button class="menu-button" id="menuButton" onclick="toggleSidebar()">☰</button>
+    
+    <!-- Main Content -->
+    <div class="main">
+        <div class="hero" id="home">
+            <h1>Welcome to Crafted Comfort</h1>
+            <p>Handmade crochet goods crafted with love and care.</p>
+            <button>Shop Now</button>
+        </div>
+        <section class="products" id="shop">
+        <div class="product">
+                <img src="example-product1.jpg" alt="Crochet Product 1">
+                <h3>Cozy Blanket</h3>
+                <p>$45.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="example-product2.jpg" alt="Crochet Product 2">
+                <h3>Handmade Hat</h3>
+                <p>$25.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="example-product3.jpg" alt="Crochet Product 3">
+                <h3>Crochet Coasters</h3>
+                <p>$15.00</p>
+                <button>Add to Cart</button>
+            </div>
+        </section>
+    </div>
+<!-- Back to Top Button -->
+<button id="backToTop" title="Go to top">↑</button>
+<script>
+    // Get the button element
+    const backToTopButton = document.getElementById("backToTop");
+
+    // Show the button when the user scrolls down 100px
+    window.onscroll = function () {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    };
+
+    // Scroll to the top when the button is clicked
+    backToTopButton.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Smooth scroll effect
+        });
+    });
+</script>
+   
+</body>
+</html>
